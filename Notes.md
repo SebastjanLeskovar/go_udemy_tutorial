@@ -156,3 +156,43 @@ Here, we turn the string "Hi there!" into a bite slice.
 
 Tests are written in files named <filename>_test.go. 
 
+(start with 4_structs)
+
+# Structs
+
+## Declaring structs
+
+```
+type person struct {
+	firstName string
+	lastName  string
+}
+```
+
+## Create a struct instance
+
+alex := person{"Alex", "Anderson"}
+
+alex := person{firstName: "Alex", lastName: "Anderson"}
+
+var alex person
+
+If we declare the variable like this, Go automatically fills the fields we did not specify with zero values.
+
+string -> ""
+int -> 0
+float -> 0
+bool -> false
+
+## Embed a struct inside another struct
+
+type contactInfo struct {
+	email   string
+	zipCode int
+}
+
+type person struct {
+	firstName string
+	lastName  string
+	contact   contactInfo
+}
