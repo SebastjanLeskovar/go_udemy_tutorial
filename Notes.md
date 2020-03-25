@@ -196,3 +196,10 @@ type person struct {
 	lastName  string
 	contact   contactInfo
 }
+
+## Pointers
+
+Go is a pass by value language. That means that whenever we pass some value into a function, Go will take that data and place it inside a new container in RAM.
+
+If eg. we do `jim.updateName("Jimmy")`, this will not change the name of object jim, but will create a new object and give it name "Jimmy".
+
