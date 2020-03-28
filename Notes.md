@@ -228,3 +228,56 @@ Value: person{firstName: "Jim"...} (jim)
 
 Turn address into value with *address (*pointerToPerson)
 Turn value into address with &value (&jim)
+
+Go has a shortcut for using receiver functions.
+
+A recevier function has a type of pointer to person as receiver. Instead of always using a function on a pointer to person, we can use it also on a variable that is of type person. It automatically turns the variable of type person into pointer to type person. 
+
+## Arrays and slices
+
+Arrays:
+ - Primitive data structure
+ - Can't be resized
+ - Rarely used directly
+
+Slices:
+ - Can grow and shrink
+ - Used 99% of the time for lists of elements
+
+When we create a slice with eg.
+
+`mySlice := []string{"Hi", "There", "How", "Are", "You"}`
+
+, we are actually creating two data structures. 
+
+First, a slice, which contains
+ - ptr to head
+ - capacity
+ - length
+
+Array contains the array of actual items. 
+
+The slice is created at one memory address and the actual array at another. When we use mySlice in a function, we are actually changing a copy of the slice. The thing is, this copy of the slice is still pointing to the exact same underlying array. 
+
+The slice data type is a reference type because it is a reference to another data structure. 
+
+It is alright to make a copy of this reference in memory because it is still pointing back at the same undelying true source of data, the array.  
+
+In Go, these are the **value types**:
+ - int
+ - float
+ - string
+ - bool
+ - structs
+
+To change these things in a function, use pointers.
+
+These are the **reference types**:
+ - slices
+ - maps
+ - channels
+ - pointers
+ - functions
+
+Don't worry about pointers with these.
+
