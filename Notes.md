@@ -203,3 +203,28 @@ Go is a pass by value language. That means that whenever we pass some value into
 
 If eg. we do `jim.updateName("Jimmy")`, this will not change the name of object jim, but will create a new object and give it name "Jimmy".
 
+### Ampersand
+
+`&variable`: Give me the memory address of the value this variable is pointing at
+
+If we say `jimPointer := &jim`, jimPointer does not directly point to the struct. It is a reference to the memory address where the struct exists at.
+
+`*pointer`: Give me the value this memory address is pointing at.
+
+For example, `*jimPointer` returns the actual struct of type person. 
+
+Asterix can mean two things:
+
+func (pointerToPerson *person) updateName() {
+	*pointerToPerson
+}
+
+For *person, it is a type description - it means we're working with a pointer to a person.
+
+For *pointerToPerson, it is an operator - it means we want to manipulate the value the pointer is referencing.
+
+Address: 0001 (jimPointer)
+Value: person{firstName: "Jim"...} (jim)
+
+Turn address into value with *address (*pointerToPerson)
+Turn value into address with &value (&jim)
