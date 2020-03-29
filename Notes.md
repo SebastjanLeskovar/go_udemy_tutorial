@@ -281,3 +281,58 @@ These are the **reference types**:
 
 Don't worry about pointers with these.
 
+## Maps
+
+A map is a colletion of key-value pairs.
+
+Both the keys and values are statically typed, meaning, they all must be of the exact same type. 
+
+colors := map[string]string{
+		"red": "#ff0000",
+		"green": "#4bf745",
+	}
+
+With `map[string]string`, we define a map with keys of type string and values of type string.
+
+Another way of declaring an empty map is with 
+
+`var colors map[string]string`
+
+The third way is with
+
+`colors := make(map[string]string)`
+
+To add an item to a map, use
+
+`colors["white"] = "#ffffff"`
+
+To remoev an item, use
+
+`delete(colors, "white")`
+
+### Iteration over map
+
+for color, hex := range colors {
+
+}
+
+### Maps vs structs
+
+Maps:
+ - All keys must be the same type
+ - All values must be the same type
+ - Keys are indexed - we can iterate over them
+ - Use to represent a collection of related properties
+ - Don't need to know all the keys at compile time
+ - Reference type!
+
+Structs:
+ - Values can be of different type
+ - Keys don't support indexing
+ - Value type!
+ - You need to know all the different fields at compile time
+ - Use to represent a thing with a lot of different properties
+
+When to use one over another?
+ - Use a map whenever you're representing a collection of very closely related properties.
+ - Structs are used more often than maps.
