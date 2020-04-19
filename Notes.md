@@ -417,3 +417,20 @@ We can't create a value directly out of this type only.
  - Interfaces are tough
 
  Step #1: Learn how to read them.
+
+### Responses in Go
+
+Response Struct
+Status => string
+StatusCode => int
+Body => io.ReadCloser
+
+io.ReadCloser interface
+Reader
+Closer
+
+io.Reader interface
+Read([]byte) (int, error)
+
+io.Closer interface
+Close() (error)
