@@ -384,3 +384,36 @@ Every function called getGreeting in this program that returns a string is now a
 As a honorary member of type 'bot', you can now call this function called printGreeting. 
 
 `func printGreeting(b bot)`
+
+### Types
+
+**Concrete types**
+
+We can create a value out of it directly and then access it and change it. 
+
+`eb := englishBot{}`
+
+ - map
+ - struct
+ - int
+ - string
+ -englishBot
+
+**Interface types**
+
+We can't create a value directly out of this type only. 
+
+ - bot
+
+### Extra notes
+
+ - Interfaces are not generic types
+ - Interfaces are implicit
+ 
+ We never had to specify that englishBot is of type bot.
+  
+ - Interfaces are a contract to help us manage types
+
+ - Interfaces are tough
+
+ Step #1: Learn how to read them.
