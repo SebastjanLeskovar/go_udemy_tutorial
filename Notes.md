@@ -336,3 +336,51 @@ Structs:
 When to use one over another?
  - Use a map whenever you're representing a collection of very closely related properties.
  - Structs are used more often than maps.
+
+## Interfaces
+
+So far we know that:
+ - every value has a type
+ - evert function has to specify the type of its arguments
+ 
+Does that then mean that we need to rewrite evert function to accommodate different types even if the logic is identical?
+
+As an example, we are writing two bots, one for English and the other for Spanish language.
+
+**English bot**
+
+type englishBot struct
+
+func (englishBot) getGreeting() string
+
+func printGreeting(eb englishBot)
+
+**Spanish bot**
+
+type spanishBot struct
+
+func (spanishBot) getGreeting() string
+
+func printGreeting(eb spanishBot)
+
+In both getGreeting() functions, the logic will be very different.
+
+in printGreeting() functions, the logic will probably be identical.
+
+### Example interface
+
+type bot interface {
+	getGreeting() string
+}
+
+`type bot interface`
+
+Our program has a new type called 'bot'.
+
+getGreeting() string
+
+Every function called getGreeting in this program that returns a string is now a honorary member of type 'bot'.
+
+As a honorary member of type 'bot', you can now call this function called printGreeting. 
+
+`func printGreeting(b bot)`
