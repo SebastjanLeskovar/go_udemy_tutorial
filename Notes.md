@@ -434,3 +434,27 @@ Read([]byte) (int, error)
 
 io.Closer interface
 Close() (error)
+
+### Different types of input
+
+Example inputs
+
+Source of input             Returns>        To print it
+HTTP Request Body       =>  []flargen    => func printHTTP([]flargen)
+Text file on hard drive =>  []string     => func printFile([]string)
+Text in command line    =>  []byte       => func printText([]byte)
+
+
+HTTP Request Body
+Text file on hard drive => Reader => []byte (output data that anyone can work with)
+Text in command line
+
+### Reader & writer
+
+Source of data => Reader => []byte
+[]byte => Writer => Some form of output
+
+Writer does this
+                       Outgoing HTTP request
+[]byte => Writer    => Text file on hard drive
+                       Terminal
