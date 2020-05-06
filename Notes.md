@@ -458,3 +458,21 @@ Writer does this
                        Outgoing HTTP request
 []byte => Writer    => Text file on hard drive
                        Terminal
+
+## Go routines
+
+All our code is always excecuted inside a Go routine.
+
+To start new Go routines, use the keyword `go`. 
+
+Example:
+
+for _, link := range links {
+	go checkLink(link)
+}
+
+This way, each checkLink function will be run seperately.
+
+Syntax:
+
+`go checkLink(link)`
