@@ -14,7 +14,7 @@ Compiles and executes one or two files.
 
 **go fmt**
 
-Formats all the code in each file in the current directory. 
+Formats all the code in each file in the current directory.
 
 **go install**
 
@@ -22,17 +22,17 @@ Compies and "installs" a package.
 
 **go get**
 
-Downloads the raw source code of someone else's package. 
+Downloads the raw source code of someone else's package.
 
 **go test**
 
-Runs any tests associated with the current project. 
+Runs any tests associated with the current project.
 
 ## What is a package
 
-Package in Go means the same as project or workspace. 
+Package in Go means the same as project or workspace.
 
-A package can contain multiple files. Each file must start with the line that states what package does the file belong to. 
+A package can contain multiple files. Each file must start with the line that states what package does the file belong to.
 
 Types of packages:
  - Executable
@@ -463,7 +463,7 @@ Writer does this
 
 All our code is always excecuted inside a Go routine.
 
-To start new Go routines, use the keyword `go`. 
+To start new Go routines, use the keyword `go`.
 
 Example:
 
@@ -476,3 +476,33 @@ This way, each checkLink function will be run seperately.
 Syntax:
 
 `go checkLink(link)`
+
+### Scheduler
+
+The scheduler always runs one routine until it finishes or makes a blocking call (like an HTTP request).
+
+If that happens, it spawns another Go Routine.
+
+**Concurrency is not parallelism.**
+
+A program is **concurrent** if it has the ability to load up multiple Go routines at a time.
+
+Concurrency: We can have multiple threads execuring code. If one thread blocks, another one is picked up and worked on.
+
+We only get parallelism once we include multiple physical CPU cores.
+
+Parallelism: multiple threads executed at the same time.
+
+### Child Routines
+
+When we will run the program, we will have one main routine created when we launch the program and child routines created by the ´go´ keyword.
+
+### Channels
+
+Channels are used to communicate in between different running Go routines.
+
+Send the value 5 into the channel: ´channel <- 5´
+
+Wait for a value to be sent into the channel. When we get one, assign to variable: ´myNumber <- channel´
+
+Wait for a value to be sent into the channel. When we get one, log it out immediately: ´fmt.Println(<- channel)´
