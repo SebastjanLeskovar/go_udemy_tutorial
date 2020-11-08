@@ -506,3 +506,7 @@ Send the value 5 into the channel: ´channel <- 5´
 Wait for a value to be sent into the channel. When we get one, assign to variable: ´myNumber <- channel´
 
 Wait for a value to be sent into the channel. When we get one, log it out immediately: ´fmt.Println(<- channel)´
+
+**Blocking channels**
+
+While the `main.go` waits to receive a message via the channel, that is also a blocking call. Therefore, we can block the execution of main.go so that it waits for the response from a channel, which allows child routines to execute.
