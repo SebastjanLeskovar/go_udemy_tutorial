@@ -510,3 +510,18 @@ Wait for a value to be sent into the channel. When we get one, log it out immedi
 **Blocking channels**
 
 While the `main.go` waits to receive a message via the channel, that is also a blocking call. Therefore, we can block the execution of main.go so that it waits for the response from a channel, which allows child routines to execute.
+
+### Function literal
+
+A function literal in Go is equivalent to Lambda in Python.
+
+It is an unnamed function that we use to wrap some little chunk of code so we can execute it at some point in the future.
+
+Syntax:
+
+```golang
+go func() {
+	time.Sleep(5 * time.Second)
+	go checkLink(l, c)
+}()
+```
