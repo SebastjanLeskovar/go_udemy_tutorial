@@ -53,7 +53,7 @@ Dynamic types
 
 Javascript, Ruby, Python
 
-We do not care what values we are assigning to any given variable. 
+We do not care what values we are assigning to any given variable.
 
 Static types
 
@@ -72,7 +72,7 @@ float64     10.000001, 0.00009, -100.003
 
 ## Functions
 
-Define a function: 
+Define a function:
 
 ```
 func newCard() string {
@@ -80,7 +80,7 @@ func newCard() string {
 }
 ```
 
-Functions must define return type. 
+Functions must define return type.
 
 ## Arrays and slices
 
@@ -112,11 +112,11 @@ func (d deck) print() {
 }
 ```
 
-d = the vorking variable / the actual copy of the deck we are working with is available as a variable called 'd'. In Python, the equivalent of 'd' is self. 
+d = the vorking variable / the actual copy of the deck we are working with is available as a variable called 'd'. In Python, the equivalent of 'd' is self.
 
 This receiver function is of type 'deck' and the function name is deck. Receiver sets up methods on variables that we create.
 
-Any variable of type 'deck' now gets access to the 'print' method. 
+Any variable of type 'deck' now gets access to the 'print' method.
 
 ## Slice range syntax
 
@@ -150,11 +150,11 @@ Function WriteFile is used to create or write to a new or existing file on local
 
 []byte("Hi there!")
 
-Here, we turn the string "Hi there!" into a bite slice. 
+Here, we turn the string "Hi there!" into a bite slice.
 
 ## Tests
 
-Tests are written in files named <filename>_test.go. 
+Tests are written in files named <filename>_test.go.
 
 (start with 4_structs)
 
@@ -211,7 +211,7 @@ If we say `jimPointer := &jim`, jimPointer does not directly point to the struct
 
 `*pointer`: Give me the value this memory address is pointing at.
 
-For example, `*jimPointer` returns the actual struct of type person. 
+For example, `*jimPointer` returns the actual struct of type person.
 
 Asterix can mean two things:
 
@@ -231,7 +231,7 @@ Turn value into address with &value (&jim)
 
 Go has a shortcut for using receiver functions.
 
-A recevier function has a type of pointer to person as receiver. Instead of always using a function on a pointer to person, we can use it also on a variable that is of type person. It automatically turns the variable of type person into pointer to type person. 
+A recevier function has a type of pointer to person as receiver. Instead of always using a function on a pointer to person, we can use it also on a variable that is of type person. It automatically turns the variable of type person into pointer to type person.
 
 ## Arrays and slices
 
@@ -248,20 +248,20 @@ When we create a slice with eg.
 
 `mySlice := []string{"Hi", "There", "How", "Are", "You"}`
 
-, we are actually creating two data structures. 
+, we are actually creating two data structures.
 
 First, a slice, which contains
  - ptr to head
  - capacity
  - length
 
-Array contains the array of actual items. 
+Array contains the array of actual items.
 
-The slice is created at one memory address and the actual array at another. When we use mySlice in a function, we are actually changing a copy of the slice. The thing is, this copy of the slice is still pointing to the exact same underlying array. 
+The slice is created at one memory address and the actual array at another. When we use mySlice in a function, we are actually changing a copy of the slice. The thing is, this copy of the slice is still pointing to the exact same underlying array.
 
-The slice data type is a reference type because it is a reference to another data structure. 
+The slice data type is a reference type because it is a reference to another data structure.
 
-It is alright to make a copy of this reference in memory because it is still pointing back at the same undelying true source of data, the array.  
+It is alright to make a copy of this reference in memory because it is still pointing back at the same undelying true source of data, the array.
 
 In Go, these are the **value types**:
  - int
@@ -285,7 +285,7 @@ Don't worry about pointers with these.
 
 A map is a colletion of key-value pairs.
 
-Both the keys and values are statically typed, meaning, they all must be of the exact same type. 
+Both the keys and values are statically typed, meaning, they all must be of the exact same type.
 
 colors := map[string]string{
 		"red": "#ff0000",
@@ -294,7 +294,7 @@ colors := map[string]string{
 
 With `map[string]string`, we define a map with keys of type string and values of type string.
 
-Another way of declaring an empty map is with 
+Another way of declaring an empty map is with
 
 `var colors map[string]string`
 
@@ -342,36 +342,42 @@ When to use one over another?
 So far we know that:
  - every value has a type
  - evert function has to specify the type of its arguments
- 
+
 Does that then mean that we need to rewrite evert function to accommodate different types even if the logic is identical?
 
 As an example, we are writing two bots, one for English and the other for Spanish language.
 
 **English bot**
 
+```go
 type englishBot struct
 
 func (englishBot) getGreeting() string
 
 func printGreeting(eb englishBot)
+```
 
 **Spanish bot**
 
+```go
 type spanishBot struct
 
 func (spanishBot) getGreeting() string
 
 func printGreeting(eb spanishBot)
+```
 
-In both getGreeting() functions, the logic will be very different.
+In both `getGreeting()` functions, the logic will be very different.
 
-in printGreeting() functions, the logic will probably be identical.
+in `printGreeting()` functions, the logic will probably be identical.
 
 ### Example interface
 
+```go
 type bot interface {
 	getGreeting() string
 }
+```
 
 `type bot interface`
 
@@ -381,7 +387,7 @@ getGreeting() string
 
 Every function called getGreeting in this program that returns a string is now a honorary member of type 'bot'.
 
-As a honorary member of type 'bot', you can now call this function called printGreeting. 
+As a honorary member of type 'bot', you can now call this function called printGreeting.
 
 `func printGreeting(b bot)`
 
@@ -389,7 +395,7 @@ As a honorary member of type 'bot', you can now call this function called printG
 
 **Concrete types**
 
-We can create a value out of it directly and then access it and change it. 
+We can create a value out of it directly and then access it and change it.
 
 `eb := englishBot{}`
 
@@ -401,7 +407,7 @@ We can create a value out of it directly and then access it and change it.
 
 **Interface types**
 
-We can't create a value directly out of this type only. 
+We can't create a value directly out of this type only.
 
  - bot
 
@@ -409,9 +415,9 @@ We can't create a value directly out of this type only.
 
  - Interfaces are not generic types
  - Interfaces are implicit
- 
+
  We never had to specify that englishBot is of type bot.
-  
+
  - Interfaces are a contract to help us manage types
 
  - Interfaces are tough
